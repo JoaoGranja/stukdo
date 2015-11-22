@@ -1,10 +1,11 @@
 class TaksController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_tak, only: [:show, :edit, :update, :destroy]
 
   # GET /taks
   # GET /taks.json
   def index
-    @taks = Tak.all
+    @taks = current_user.taks
   end
 
   # GET /taks/1
@@ -24,7 +25,7 @@ class TaksController < ApplicationController
   # POST /taks
   # POST /taks.json
   def create
-    @tak = Tak.new(tak_params)
+    @tak = current_user.taks.new(tak_params)
 
     respond_to do |format|
       if @tak.save
