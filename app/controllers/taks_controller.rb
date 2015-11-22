@@ -5,7 +5,9 @@ class TaksController < ApplicationController
   # GET /taks
   # GET /taks.json
   def index
-    @taks = current_user.taks
+    @to_do = current_user.taks.where(state: "to_do")
+    @doing = current_user.taks.where(state: "doing")
+    @done = current_user.taks.where(state: "done")
   end
 
   # GET /taks/1
@@ -70,6 +72,6 @@ class TaksController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def tak_params
-      params.require(:tak).permit(:content)
+      params.require(:tak).permit(:content, :state)
     end
 end
