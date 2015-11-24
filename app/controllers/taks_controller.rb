@@ -1,6 +1,6 @@
 class TaksController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_tak, only: [:show, :edit, :update, :destroy]
+  before_action :set_tak, only: [:show, :edit, :update, :destroy, :change]
 
   # GET /taks
   # GET /taks.json
@@ -61,6 +61,13 @@ class TaksController < ApplicationController
     respond_to do |format|
       format.html { redirect_to taks_url, notice: 'Tak was successfully destroyed.' }
       format.json { head :no_content }
+    end
+  end
+
+  def change
+    @tak.update_attributes(state: params[:state])
+    respond_to do |format|
+      format.html {redirect_to taks_path, notice: "Task upadte"} 
     end
   end
 
