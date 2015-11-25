@@ -1,0 +1,14 @@
+<tr>
+	<td><%= tak.content %></td>
+	<td><%= tak.state %></td>
+	<td><%= link_to 'Show', tak %></td>
+	<td><%= link_to 'Edit', edit_tak_path(tak) %></td>
+	<td><%= link_to 'Destroy', tak, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+	<% if tak.state == "doing" %>
+	<td><%= link_to 'Mark as To Do', change_tak_path(tak, state: "to_do"), method: :put %></td>
+	<td><%= link_to 'Mark as Done', change_tak_path(tak, state: "done"), method: :put %></td>
+
+	<% else %>
+	<td><%= link_to 'Mark as Doing', change_tak_path(tak, state: "doing"), method: :put %></td>
+	<% end %>
+</tr>

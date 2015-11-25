@@ -10,16 +10,7 @@
   </thead>
 
   <tbody>
-    <% @to_do.each do |tak| %>
-      <tr>
-        <td><%= tak.content %></td>
-        <td><%= tak.state %></td>
-        <td><%= link_to 'Show', tak %></td>
-        <td><%= link_to 'Edit', edit_tak_path(tak) %></td>
-        <td><%= link_to 'Destroy', tak, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        <td><%= link_to 'Mark as Doing', change_tak_path(tak, state: "doing"), method: :put %></td>
-      </tr>
-    <% end %>
+    <%= render @to_do %>
   </tbody>
 </table>
 
@@ -37,17 +28,7 @@
   </thead>
 
   <tbody>
-    <% @doing.each do |tak| %>
-      <tr>
-        <td><%= tak.content %></td>
-        <td><%= tak.state %></td>
-        <td><%= link_to 'Show', tak %></td>
-        <td><%= link_to 'Edit', edit_tak_path(tak) %></td>
-        <td><%= link_to 'Destroy', tak, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        <td><%= link_to 'Mark as To Do', change_tak_path(tak, state: "to_do"), method: :put %></td>
-        <td><%= link_to 'Mark as Done', change_tak_path(tak, state: "done"), method: :put %></td>
-      </tr>
-    <% end %>
+    <%= render @doing %>
   </tbody>
 </table>
 
@@ -65,16 +46,7 @@
   </thead>
 
   <tbody>
-    <% @done.each do |tak| %>
-      <tr>
-        <td><%= tak.content %></td>
-        <td><%= tak.state %></td>
-        <td><%= link_to 'Show', tak %></td>
-        <td><%= link_to 'Edit', edit_tak_path(tak) %></td>
-        <td><%= link_to 'Destroy', tak, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        <td><%= link_to 'Mark as Doing', change_tak_path(tak, state: "doing"), method: :put %></td>
-      </tr>
-    <% end %>
+    <%= render @done %>
   </tbody>
 </table>
 

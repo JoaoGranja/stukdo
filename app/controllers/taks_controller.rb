@@ -67,7 +67,7 @@ class TaksController < ApplicationController
   def change
     @tak.update_attributes(state: params[:state])
     respond_to do |format|
-      format.html {redirect_to taks_path, notice: "Task upadte"} 
+      format.html {redirect_to taks_path, notice: "Task update"} 
     end
   end
 
