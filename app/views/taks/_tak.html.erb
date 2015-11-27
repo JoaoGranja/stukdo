@@ -4,6 +4,7 @@
 	<%= link_to edit_tak_path(tak) do %>
 		created <%= time_ago_in_words(tak.created_at)%> ago
 		<% end %>
+	<%= link_to "x", tak_path(tak), method: :delete, data: {confirm: "Are you sure?"}, class: "pull-right"%>
 	</div>
 	<div class="panel-body"> <%= tak.content%></div>
 	<div class="panel-footer text-center"> 
