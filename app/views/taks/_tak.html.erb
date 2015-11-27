@@ -1,14 +1,22 @@
-<tr>
-	<td><%= tak.content %></td>
-	<td><%= tak.state %></td>
-	<td><%= link_to 'Show', tak %></td>
-	<td><%= link_to 'Edit', edit_tak_path(tak) %></td>
-	<td><%= link_to 'Destroy', tak, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-	<% if tak.state == "doing" %>
-	<td><%= link_to 'Mark as To Do', change_tak_path(tak, state: "to_do"), method: :put %></td>
-	<td><%= link_to 'Mark as Done', change_tak_path(tak, state: "done"), method: :put %></td>
 
+<div class="panel panel-info">
+	<div class="panel-heading"> 
+	<%= link_to edit_tak_path(tak) do %>
+		created <%= time_ago_in_words(tak.created_at)%> ago
+		<% end %>
+	</div>
+	<div class="panel-body"> <%= tak.content%></div>
+	<div class="panel-footer text-center"> 
+	<% if tak.state == "doing" %>
+	<div class="btn-group btn-group-justified">
+	<%= link_to "<i class='fa fa-arrow-left'></i>".html_safe, change_tak_path(tak, state: "to_do"), method: :put, class: "btn btn-info btn-md btn-block" %>
+	<%= link_to "<i class='fa fa-arrow-right'></i>".html_safe, change_tak_path(tak, state: "done"), method: :put, class: "btn btn-info btn-md btn-block" %>
+	</div>
+	<% elsif tak.state == "done" %>
+	<%= link_to "<i class='fa fa-arrow-left'></i>".html_safe, change_tak_path(tak, state: "doing"), method: :put, class: "btn btn-info btn-md btn-block" %>
 	<% else %>
-	<td><%= link_to 'Mark as Doing', change_tak_path(tak, state: "doing"), method: :put %></td>
+	<%= link_to "<i class='fa fa-arrow-right'></i>".html_safe, change_tak_path(tak, state: "doing"), method: :put, class: "btn btn-info btn-md btn-block" %>
 	<% end %>
-</tr>
+
+	</div>
+</div>
