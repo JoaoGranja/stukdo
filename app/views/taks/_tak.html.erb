@@ -6,7 +6,7 @@
 		<% end %>
 	<%= link_to "x", tak_path(tak), method: :delete, data: {confirm: "Are you sure?"}, class: "pull-right"%>
 	</div>
-	<div class="panel-body"> <%= tak.content%></div>
+	<div class="panel-body"> <%= raw(tak.content_html)%></div>
 	<div class="panel-footer text-center"> 
 	<% if tak.state == "doing" %>
 	<div class="btn-group btn-group-justified">
